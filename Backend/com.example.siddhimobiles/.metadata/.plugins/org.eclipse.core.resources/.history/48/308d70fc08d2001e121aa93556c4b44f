@@ -1,0 +1,39 @@
+package com.example.siddhimobiles.service;
+
+import java.util.Collection;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.siddhimobiles.entity.Orders;
+import com.example.siddhimobiles.repository.OrderRepository;
+
+
+@Service
+public class OrderServices {
+	@Autowired
+	private OrderRepository ordersRepositroyRef;
+	
+	public Collection<Orders> getAllOrders(){
+		Collection<Orders> allOrders = ordersRepositroyRef.findAll();
+		return allOrders;
+	}
+	
+	public Orders getOneOrder(Long id) {
+		Orders foundOrder = null;
+		Optional<Orders> opt = ordersRepositroyRef.findById(id);
+		if(!opt.isEmpty())
+			foundOrder = opt.get();
+		return foundOrder;
+	}
+	
+	public void addNewOrder(Orders orderRef) {
+		ordersRepositroyRef.save(orderRef);
+	}
+	
+	public void deleteOneOrder(Long id) {
+		ordersRepositroyRef.deleteById(id);
+	}
+
+}

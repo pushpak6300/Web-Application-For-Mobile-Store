@@ -1,0 +1,46 @@
+package com.example.siddhimobiles.controller;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.siddhimobiles.entity.Category;
+import com.example.siddhimobiles.service.CategoryServices;
+
+@RestController
+public class ImageController {
+	/*@Autowired
+	private ImageServices imageService;
+	
+	@GetMapping("/image")
+	public Collection<Image> getAllImage() {
+		Collection<Image> allImage = imageService.getAllImages();
+		System.out.println("allImage");
+		return allImage;
+	}
+
+	@GetMapping("/image/{imageId}")
+	public Image getOneImage(@PathVariable("imageId") Long id) {
+		Image foundImage = imageService.getOneImage(id);
+		return foundImage;
+	}
+
+	@PostMapping("/image")
+	public void addNewImage(@RequestBody Image imageRef) {
+		System.out.println(imageService);
+		imageService.addNewImage(imageRef);
+
+	}
+
+	@DeleteMapping("/image/{imageId}")
+	public void deleteOneImage(@PathVariable("imageId") Long id) {
+		imageService.deleteOneImage(id);
+	}
+*/
+}

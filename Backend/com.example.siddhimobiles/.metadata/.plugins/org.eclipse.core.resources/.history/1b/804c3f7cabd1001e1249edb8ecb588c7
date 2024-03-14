@@ -1,0 +1,5 @@
+package com.example.siddhimobiles.service;
+
+public interface FileService {
+
+}

@@ -1,0 +1,8 @@
+package com.example.siddhimobiles.util;
+
+public class UserIdGenerator {
+	private static long idCounter = 0;
+
+    public static synchronized String generate() {
+        return "SM" + (++idCounter);
+}

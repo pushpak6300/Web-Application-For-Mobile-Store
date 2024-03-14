@@ -1,0 +1,37 @@
+package com.example.siddhimobiles.service;
+
+import java.util.Collection;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.siddhimobiles.entity.Category;
+import com.example.siddhimobiles.repository.CategoryRepository;
+
+@Service
+public class ImageService {
+	/*@Autowired
+	private ImageRepo imageRepo;
+
+	public Collection<Image> getAllImages() {
+		Collection<Image> allImages = imageRepo.findAll();
+		return allImages;
+	}
+
+	public Image getOneImage(Long id) {
+		Image foundImage = null;
+		Optional<Image> opt = imageRepo.findById(id);
+		if (!opt.isEmpty())
+			foundImage = opt.get();
+		return foundImage;
+	}
+
+	public void addNewImage(Image ImageRef) {
+		imageRepo.save(ImageRef);
+	}
+
+	public void deleteOneImage(Long id) {
+		imageRepo.deleteById(id);
+	}*/
+}

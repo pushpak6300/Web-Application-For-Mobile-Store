@@ -1,0 +1,65 @@
+package com.example.siddhimobiles.entity;
+
+import java.util.Arrays;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Products")
+public class Product {
+	@Id
+	@Column(name="product_id")
+    private long productId;
+	
+	@Column(name="product_name")
+	private String productName;
+	
+	@Lob
+	@Column(name="product_img",columnDefinition = "BLOB")
+	private String productImg;
+	
+	@Column(name="product_model")
+	private String productModel;
+	
+	@Column(name="product_quantity")
+	private int quantity;
+	
+	@Column(name="product_price")
+	private double price;
+	
+	@Column(name="available_colors")
+	private String avaliableColor;
+	
+	@Column(name="discount")
+	private double discount;
+	
+	@Column(name="unit_In_Stock")
+	private int unitInStock;
+	
+	@Column(name="unit_On_Stock")
+	private int unitOnOrder;
+	
+	@OneToOne
+	@JoinColumn(name="category_id")
+	private Category category;
+	@ManyToOne
+	@JoinColumn(name="Supplier_ID")
+	private	Suppliers supplierId;
+	
+		
+	public Product() {
+	}
+
+}

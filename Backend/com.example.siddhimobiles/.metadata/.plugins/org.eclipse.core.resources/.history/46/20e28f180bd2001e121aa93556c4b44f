@@ -1,0 +1,57 @@
+package com.example.siddhimobiles.controller;
+
+import org.hibernate.mapping.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.siddhimobiles.entity.OrderDetails;
+import com.example.siddhimobiles.service.OrderDetailsService;
+
+@RestController
+@RequestMapping("orderdetails")
+public class OrderDetailsController {
+	private final OrderDetailsService orderDetailsService;
+
+    @Autowired
+    public OrderDetailsController(OrderDetailsService orderDetailsService) {
+        this.orderDetailsService = orderDetailsService;
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<OrderDetails> addOrderDetail(@RequestBody OrderDetails orderDetail) {
+        OrderDetails newOrderDetail = orderDetailsService.saveOrderDetail(orderDetail);
+        return new ResponseEntity<>(newOrderDetail, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderDetails> getOrderDetailById(@PathVariable Long id) {
+        return orderDetailsService.getOrderDetailById(id)
+                .map(detail -> new ResponseEntity<>(detail, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/order/{orderId}")
+    public ResponseEntity<List> getOrderDetailsByOrderId(@PathVariable Long orderId) {
+        List<OrderDetails> orderDetails = orderDetailsService.getOrderDetailsByOrderId(orderId);
+        if (orderDetails.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(orderDetails, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOrderDetail(@PathVariable Long id) {
+        orderDetailsService.deleteOrderDetail(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+}

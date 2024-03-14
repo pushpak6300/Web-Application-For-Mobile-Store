@@ -1,0 +1,8 @@
+package com.example.siddhimobiles.security;
+
+public class GenerateSecretKey {
+
+	public static void main(String[] args) {
+	        String secretKey = UUID.randomUUID().toString();
+	        System.out.println("Your JWT Secret Key: " + secretKey);
+	    }

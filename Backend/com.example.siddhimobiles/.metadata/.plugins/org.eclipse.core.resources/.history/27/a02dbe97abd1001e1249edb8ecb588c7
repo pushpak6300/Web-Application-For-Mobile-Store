@@ -1,0 +1,50 @@
+package com.example.siddhimobiles.service;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.example.siddhimobiles.entity.Category;
+import com.example.siddhimobiles.entity.Image;
+import com.example.siddhimobiles.repository.CategoryRepository;
+import com.example.siddhimobiles.repository.ImageRepo;
+
+@Service
+public class ImageService {
+	@Autowired
+    private ImageRepo imageRepo;
+
+    public Collection<Image> getAllImages() {
+        return imageRepo.findAll();
+    }
+
+    public Image getOneImage(Long id) {
+        return imageRepo.findById(id).orElse(null);
+    }
+
+    public void addNewImage(Image imageRef) {
+        imageRepo.save(imageRef);
+    }
+
+    public void deleteOneImage(Long id) {
+        imageRepo.deleteById(id);
+    }
+
+    // New method to handle file upload
+    public void saveImageFile(Long id, MultipartFile file) {
+        try {
+            // Assuming your Image entity has a setter for the byte array
+            // and an id setter if not using auto-generated ids
+            Image image = new Image();
+            image.setId(id); // Set the image's ID if necessary
+            image.setImage(file.getBytes());
+            imageRepo.save(image);
+        } catch (IOException e) {
+            throw new RuntimeException("Error saving image", e);
+        }
+    }
+}

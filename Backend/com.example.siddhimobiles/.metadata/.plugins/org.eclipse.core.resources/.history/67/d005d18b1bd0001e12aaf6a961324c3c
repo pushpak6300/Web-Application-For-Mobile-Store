@@ -1,0 +1,25 @@
+package com.example.siddhimobiles.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.example.siddhimobiles.security.JWTAuthenticationEntryPoint;
+import com.example.siddhimobiles.security.JWTAuthenticationFilter;
+
+@Configuration
+public class SecurityConfig {
+	@Autowired
+	private JWTAuthenticationEntryPoint point;
+	
+	@Autowired
+	private JWTAuthenticationFilter filter;
+	
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+		
+		
+		
+		return http.build();
+	}
+}

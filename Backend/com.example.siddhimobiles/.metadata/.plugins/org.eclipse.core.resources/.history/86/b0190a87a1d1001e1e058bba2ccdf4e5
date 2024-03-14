@@ -1,0 +1,18 @@
+package com.example.siddhimobiles.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+
+@Entity
+public class Image {
+	
+	@Id
+	private long id;
+	
+	@Lob
+	@Column(name="product_img",columnDefinition = "BLOB")
+	private byte[] image;
+
+}

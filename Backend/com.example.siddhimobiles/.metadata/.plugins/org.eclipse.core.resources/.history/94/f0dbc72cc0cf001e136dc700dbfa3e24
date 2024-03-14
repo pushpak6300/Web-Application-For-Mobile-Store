@@ -1,0 +1,15 @@
+package com.example.siddhimobiles.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.stereotype.Service;
+
+import com.example.siddhimobiles.repository.UserRepository;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepositoryRef;
+
+
+}

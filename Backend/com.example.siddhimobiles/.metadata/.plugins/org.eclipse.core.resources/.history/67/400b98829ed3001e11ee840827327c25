@@ -1,0 +1,5 @@
+package com.example.siddhimobiles.security;
+
+public class WebSecurityConfig {
+
+}
